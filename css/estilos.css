@@ -1,0 +1,541 @@
+/* =====================================================================
+   ESTILOS DE KUARAHY ESTAMPA
+   ---------------------------------------------------------------------
+   Paleta cálida (tierra, sol y monte) para diferenciarse del azul,
+   blanco y negro. Los colores están en variables (--nombre) para que,
+   si querés cambiar la paleta, lo hagas en un solo lugar.
+   ===================================================================== */
+
+:root {
+  --crema: #fbf3e4;       /* fondo general */
+  --arena: #f1e2c6;       /* fondos secundarios */
+  --cafe: #3b2a20;        /* texto principal */
+  --cafe-suave: #6e5646;  /* texto secundario */
+  --terracota: #c8553d;   /* color principal de la marca */
+  --terracota-osc: #a8432e;
+  --mostaza: #e9a23b;     /* acento */
+  --monte: #24533e;       /* verde oscuro para la sección de personalizados */
+  --wa: #128c4a;          /* verde de los botones de WhatsApp */
+  --wa-osc: #0d6e3a;
+
+  --radio: 18px;          /* redondeo de las esquinas */
+  --sombra: 0 10px 30px -12px rgba(59, 42, 32, 0.35);
+  --fuente-titulos: "Bricolage Grotesque", system-ui, sans-serif;
+  --fuente-texto: "DM Sans", system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  color: var(--cafe);
+  background: var(--crema);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.1;
+  margin: 0 0 0.5em;
+}
+
+a { color: inherit; }
+
+/* Centra el contenido y limita el ancho */
+.contenedor {
+  width: min(1140px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+/* Texto oculto a la vista pero leído por lectores de pantalla */
+.solo-lectores {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* Etiqueta pequeña sobre los títulos */
+.etiqueta {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin: 0 0 0.75rem;
+}
+.etiqueta--clara { color: var(--mostaza); }
+
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s, background-color 0.15s;
+}
+.boton:hover { transform: translateY(-2px); }
+.boton:focus-visible { outline: 3px solid var(--mostaza); outline-offset: 2px; }
+
+.boton--principal { background: var(--terracota); color: #fff; }
+.boton--principal:hover { background: var(--terracota-osc); }
+
+.boton--borde { border-color: var(--cafe); color: var(--cafe); }
+.boton--borde:hover { background: var(--cafe); color: var(--crema); }
+
+.boton--whatsapp { background: var(--wa); color: #fff; }
+.boton--whatsapp:hover { background: var(--wa-osc); }
+
+.boton--ancho { width: 100%; }
+
+/* Ícono de globo de chat, dibujado con una máscara SVG */
+.icono-wa {
+  width: 1.2em; height: 1.2em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.9 13.8c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2Z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.9 13.8c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.2Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  flex-shrink: 0;
+}
+
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(251, 243, 228, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--arena);
+}
+.encabezado__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+  gap: 1rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.logo strong { color: var(--terracota); font-weight: 800; }
+.logo__icono { width: 34px; height: 34px; }
+
+.menu { display: flex; gap: 1.5rem; }
+.menu a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--cafe-suave);
+}
+.menu a:hover { color: var(--terracota); }
+
+
+/* ---------- Portada ---------- */
+.portada {
+  padding: 4rem 0 3rem;
+  /* Fondo con un "sol" grande difuminado */
+  background:
+    radial-gradient(circle at 85% 30%, rgba(233, 162, 59, 0.35), transparent 45%),
+    var(--crema);
+  overflow: hidden;
+}
+.portada__grilla {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+.portada h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.portada__bajada {
+  font-size: 1.15rem;
+  color: var(--cafe-suave);
+  max-width: 34ch;
+  margin: 0 0 1.75rem;
+}
+.portada__botones { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* Las tres piezas ilustradas de la portada, superpuestas */
+.portada__ilustracion {
+  position: relative;
+  aspect-ratio: 1 / 0.9;
+}
+.portada__pieza {
+  position: absolute;
+  filter: drop-shadow(0 14px 18px rgba(59, 42, 32, 0.25));
+}
+.portada__pieza svg { width: 100%; height: auto; display: block; }
+.portada__pieza--1 { width: 68%; left: 4%; top: 0; transform: rotate(-6deg); }
+.portada__pieza--2 { width: 42%; right: 0; bottom: 4%; transform: rotate(5deg); }
+.portada__pieza--3 { width: 40%; left: 0; bottom: 0; transform: rotate(-12deg); }
+
+
+/* ---------- Secciones ---------- */
+.seccion { padding: 4.5rem 0; }
+
+.seccion__titulo { margin-bottom: 2rem; }
+.seccion__titulo h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.seccion__titulo p { color: var(--cafe-suave); margin: 0; }
+
+.seccion--oscura {
+  background: var(--monte);
+  color: var(--crema);
+}
+
+
+/* ---------- Filtros ---------- */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.filtro {
+  font: inherit;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 2px solid var(--arena);
+  background: #fff;
+  color: var(--cafe);
+  cursor: pointer;
+}
+.filtro small {
+  font-size: 0.75rem;
+  color: var(--cafe-suave);
+  margin-left: 0.2rem;
+}
+.filtro:hover { border-color: var(--terracota); }
+/* aria-pressed="true" = el filtro que está activo */
+.filtro[aria-pressed="true"] {
+  background: var(--cafe);
+  border-color: var(--cafe);
+  color: var(--crema);
+}
+.filtro[aria-pressed="true"] small { color: var(--mostaza); }
+
+
+/* ---------- Grilla y tarjetas de productos ---------- */
+.grilla-productos {
+  display: grid;
+  /* Tantas columnas como entren, de mínimo 250px cada una */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  animation: aparecer 0.35s ease both;
+}
+.producto[hidden] { display: none; }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.producto__imagen {
+  position: relative;
+  /* Fondo con puntitos, como papel de taller */
+  background:
+    radial-gradient(circle, rgba(59, 42, 32, 0.08) 1.2px, transparent 1.4px) 0 0 / 16px 16px,
+    var(--arena);
+  padding: 1rem 1.5rem 0.5rem;
+}
+.producto__dibujo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 230px;
+}
+
+.insignia {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  background: var(--terracota);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.producto__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+  flex: 1;
+}
+.producto__categoria {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--terracota);
+}
+.producto h3 { font-size: 1.25rem; margin: 0; }
+.producto__descripcion { margin: 0; font-size: 0.92rem; color: var(--cafe-suave); }
+.producto__precio {
+  margin: 0.35rem 0 0.4rem;
+  font-family: var(--fuente-titulos);
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+
+/* Grupo de opciones (talles o colores) */
+.selector {
+  border: 0;
+  padding: 0;
+  margin: 0 0 0.75rem;
+}
+.selector legend {
+  font-size: 0.85rem;
+  color: var(--cafe-suave);
+  margin-bottom: 0.4rem;
+  padding: 0;
+}
+.selector legend b { color: var(--cafe); }
+.selector__opciones { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.selector--unico input { pointer-events: none; }
+
+/* Animación de "sacudida" cuando falta elegir talle */
+.selector--falta { animation: sacudir 0.5s; }
+@keyframes sacudir {
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* Escondemos el círculo del radio y estilizamos el <span> de al lado */
+.opcion-talle input,
+.opcion-color input {
+  position: absolute;
+  opacity: 0;
+}
+
+.opcion-talle span {
+  display: inline-block;
+  min-width: 2.4rem;
+  padding: 0.35rem 0.6rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 2px solid var(--arena);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.opcion-talle span:hover { border-color: var(--cafe-suave); }
+.opcion-talle input:checked + span {
+  background: var(--cafe);
+  border-color: var(--cafe);
+  color: var(--crema);
+}
+.opcion-talle input:focus-visible + span,
+.opcion-color input:focus-visible + span {
+  outline: 3px solid var(--mostaza);
+  outline-offset: 2px;
+}
+
+.opcion-color span {
+  display: block;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--muestra); /* el color viene desde app.js */
+  border: 2px solid rgba(59, 42, 32, 0.25);
+  cursor: pointer;
+}
+.opcion-color input:checked + span {
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--cafe);
+}
+
+/* El botón de WhatsApp queda siempre abajo de la tarjeta */
+.producto .boton--whatsapp {
+  margin-top: auto;
+  white-space: nowrap;   /* que "Pedir por WhatsApp" no se corte en dos líneas */
+  padding-inline: 0.8rem;
+}
+
+.producto__aviso {
+  margin: 0.4rem 0 0;
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--terracota);
+}
+
+
+/* ---------- Personalizados ---------- */
+.personalizados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.personalizados h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.personalizados__info > p { color: rgba(251, 243, 228, 0.85); font-size: 1.05rem; }
+
+.pasos {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 0.8rem;
+}
+.pasos li { display: flex; align-items: center; gap: 0.8rem; }
+.pasos span {
+  display: grid;
+  place-items: center;
+  width: 2rem; height: 2rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--mostaza);
+  color: var(--cafe);
+  font-weight: 800;
+}
+
+.formulario {
+  background: var(--crema);
+  color: var(--cafe);
+  border-radius: var(--radio);
+  padding: 1.75rem;
+  display: grid;
+  gap: 1rem;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+}
+.formulario label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.formulario input,
+.formulario select,
+.formulario textarea {
+  font: inherit;
+  font-weight: 400;
+  padding: 0.7rem 0.85rem;
+  border: 2px solid var(--arena);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--cafe);
+  width: 100%;
+}
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--terracota);
+}
+.formulario__fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.formulario__nota { margin: 0; font-size: 0.85rem; color: var(--cafe-suave); text-align: center; }
+.formulario__error { margin: 0; min-height: 0; font-weight: 700; color: var(--terracota); text-align: center; }
+.formulario__error:empty { display: none; }
+
+
+/* ---------- Cómo comprar ---------- */
+.tarjetas-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.tarjetas-info article {
+  background: var(--arena);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  border-top: 6px solid var(--terracota);
+}
+.tarjetas-info article:nth-child(2) { border-top-color: var(--mostaza); }
+.tarjetas-info article:nth-child(3) { border-top-color: var(--monte); }
+.tarjetas-info h3 { font-size: 1.2rem; }
+.tarjetas-info p { margin: 0; color: var(--cafe-suave); }
+
+
+/* ---------- Pie ---------- */
+.pie {
+  background: var(--cafe);
+  color: var(--arena);
+  padding: 2rem 0 5rem;
+  font-size: 0.92rem;
+}
+.pie__fila { display: grid; gap: 0.3rem; text-align: center; }
+.pie p { margin: 0; }
+.pie__aviso { opacity: 0.6; font-size: 0.8rem; margin-top: 0.5rem !important; }
+
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.wa-flotante {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 58px; height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--wa);
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.45);
+  z-index: 20;
+  transition: transform 0.15s;
+}
+.wa-flotante:hover { transform: scale(1.08); }
+
+
+/* =====================================================================
+   RESPONSIVE: ajustes para pantallas chicas (celulares)
+   ===================================================================== */
+@media (max-width: 860px) {
+  .portada__grilla,
+  .personalizados { grid-template-columns: 1fr; }
+  .portada__ilustracion { max-width: 420px; margin-inline: auto; width: 100%; }
+  .tarjetas-info { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .menu { display: none; } /* en celular escondemos el menú para simplificar */
+  .portada { padding-top: 2.5rem; }
+  .formulario__fila { grid-template-columns: 1fr; }
+  .grilla-productos { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .producto__cuerpo { padding: 0.9rem; }
+  .producto__imagen { padding: 0.6rem 0.8rem 0.2rem; }
+  .producto h3 { font-size: 1.05rem; }
+  .producto__precio { font-size: 1.2rem; }
+  .boton { padding: 0.75rem 1rem; font-size: 0.9rem; }
+  .producto .boton--whatsapp { font-size: 0.8rem; padding-inline: 0.5rem; }
+}
+
+@media (max-width: 400px) {
+  .grilla-productos { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuarahy Estampa — Remeras y sublimaciones</title>
+  <meta name="description" content="Remeras, tazas, gorras y sublimaciones personalizadas en Asunción. Pedí por WhatsApp.">
+
+  <!-- Tipografías de Google Fonts: una para títulos y otra para el texto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Nuestra hoja de estilos -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <header class="encabezado">
+    <div class="contenedor encabezado__fila">
+      <a href="#inicio" class="logo">
+        <!-- Logo: un solcito simple hecho en SVG (Kuarahy = "sol" en guaraní) -->
+        <svg class="logo__icono" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="8" fill="#f2a541"/>
+          <g stroke="#f2a541" stroke-width="3" stroke-linecap="round">
+            <line x1="20" y1="3" x2="20" y2="8"/><line x1="20" y1="32" x2="20" y2="37"/>
+            <line x1="3" y1="20" x2="8" y2="20"/><line x1="32" y1="20" x2="37" y2="20"/>
+            <line x1="8" y1="8" x2="11.5" y2="11.5"/><line x1="28.5" y1="28.5" x2="32" y2="32"/>
+            <line x1="8" y1="32" x2="11.5" y2="28.5"/><line x1="28.5" y1="11.5" x2="32" y2="8"/>
+          </g>
+        </svg>
+        <span>Kuarahy <strong>Estampa</strong></span>
+      </a>
+      <nav class="menu" aria-label="Menú principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#personalizados">Personalizados</a>
+        <a href="#como-comprar">Cómo comprar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== PORTADA (HERO) ===================== -->
+    <section class="portada" id="inicio">
+      <div class="contenedor portada__grilla">
+        <div class="portada__texto">
+          <p class="etiqueta">Sublimación y estampado en Asunción</p>
+          <h1>Ponele tu sello a todo lo que usás.</h1>
+          <p class="portada__bajada">
+            Remeras, tazas, gorras y más, con diseños propios o con el tuyo.
+            Elegís, nos escribís por WhatsApp y te lo preparamos.
+          </p>
+          <div class="portada__botones">
+            <a href="#catalogo" class="boton boton--principal">Ver catálogo</a>
+            <a href="#personalizados" class="boton boton--borde">Quiero mi diseño</a>
+          </div>
+        </div>
+        <!-- Ilustración decorativa de la portada (la arma app.js) -->
+        <div class="portada__ilustracion" id="ilustracion-portada" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ===================== CATÁLOGO ===================== -->
+    <section class="seccion" id="catalogo">
+      <div class="contenedor">
+        <div class="seccion__titulo">
+          <h2>Catálogo</h2>
+          <p>Elegí talle y color, y tocá <strong>Pedir por WhatsApp</strong>. El mensaje se arma solo.</p>
+        </div>
+
+        <!-- Botones de filtro: se generan desde app.js según las categorías -->
+        <div class="filtros" id="filtros" role="group" aria-label="Filtrar por categoría"></div>
+
+        <!-- Acá app.js "dibuja" las tarjetas de productos -->
+        <div class="grilla-productos" id="grilla-productos"></div>
+      </div>
+    </section>
+
+    <!-- ===================== PEDIDOS PERSONALIZADOS ===================== -->
+    <section class="seccion seccion--oscura" id="personalizados">
+      <div class="contenedor personalizados">
+        <div class="personalizados__info">
+          <p class="etiqueta etiqueta--clara">Sublimación a pedido</p>
+          <h2>¿Tenés tu propio diseño?</h2>
+          <p>
+            Logo de tu negocio, foto familiar, la remera del cumple o del equipo:
+            lo sublimamos en el producto que quieras. Desde 1 unidad.
+          </p>
+          <ol class="pasos">
+            <li><span>1</span> Completá los datos de acá al lado.</li>
+            <li><span>2</span> Se abre WhatsApp con tu pedido ya escrito.</li>
+            <li><span>3</span> Adjuntá tu diseño (imagen o PDF) en ese mismo chat.</li>
+            <li><span>4</span> Te pasamos el presupuesto y una vista previa antes de imprimir.</li>
+          </ol>
+        </div>
+
+        <!-- Formulario: no se envía a ningún servidor, solo arma el mensaje de WhatsApp -->
+        <form class="formulario" id="form-personalizado">
+          <label>
+            Tu nombre
+            <input type="text" name="nombre" placeholder="Ej.: Lourdes" required>
+          </label>
+          <label>
+            ¿Sobre qué producto?
+            <select name="producto" id="select-personalizado"></select>
+          </label>
+          <div class="formulario__fila">
+            <label>
+              Cantidad
+              <input type="number" name="cantidad" min="1" value="1" required>
+            </label>
+            <label>
+              ¿Para cuándo?
+              <input type="date" name="fecha">
+            </label>
+          </div>
+          <label>
+            Contanos tu idea
+            <textarea name="detalle" rows="3" placeholder="Ej.: logo adelante, nombre atrás, remeras blancas talle M y L"></textarea>
+          </label>
+          <!-- Es un enlace (no un botón de envío): app.js le actualiza el
+               href con el mensaje cada vez que escribís algo -->
+          <a href="#" class="boton boton--whatsapp boton--ancho" id="enviar-personalizado" target="_blank" rel="noopener">
+            <span class="icono-wa" aria-hidden="true"></span>
+            Enviar pedido por WhatsApp
+          </a>
+          <p class="formulario__error" id="error-personalizado" role="alert"></p>
+          <p class="formulario__nota">
+            Recordá adjuntar tu diseño en el chat. WhatsApp: <strong>0981 292 616</strong>
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== CÓMO COMPRAR ===================== -->
+    <section class="seccion" id="como-comprar">
+      <div class="contenedor">
+        <div class="seccion__titulo">
+          <h2>Cómo comprar</h2>
+        </div>
+        <div class="tarjetas-info">
+          <article>
+            <h3>Pedís por WhatsApp</h3>
+            <p>Elegís el producto, talle y color. Te confirmamos stock y plazo de entrega.</p>
+          </article>
+          <article>
+            <h3>Pagás como te quede cómodo</h3>
+            <p>Transferencia, giro o efectivo al retirar. Para pedidos personalizados se abona una seña del 50 %.</p>
+          </article>
+          <article>
+            <h3>Retirás o te lo llevamos</h3>
+            <p>Retiro en Fernando de la Mora o delivery en Asunción y Gran Asunción. Envíos al interior por encomienda.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <footer class="pie">
+    <div class="contenedor pie__fila">
+      <p><strong>Kuarahy Estampa</strong> · Sublimación y estampado · Paraguay</p>
+      <p>Lunes a sábado, 8:00 a 18:00 · WhatsApp 0981 292 616</p>
+      <p class="pie__aviso">Tienda ficticia creada como proyecto de portafolio.</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp (siempre visible) -->
+  <a class="wa-flotante" id="wa-flotante" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <span class="icono-wa" aria-hidden="true"></span>
+  </a>
+
+  <!-- Scripts: primero los datos (productos), después la lógica -->
+  <script src="js/productos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
